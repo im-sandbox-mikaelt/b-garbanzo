@@ -36,8 +36,7 @@ jobs:
           echo test, and deploy your project.
 
   deployment:
-    runs-on: ubuntu-latest
-    environment: DEV
+    runs-on: [Production2]
     steps:
       - name: Run a only if a PR is opened
         if: ${{ github.event_name == 'pull_request' }} 
