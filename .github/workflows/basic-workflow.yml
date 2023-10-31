@@ -47,6 +47,7 @@ jobs:
         with:
           repository: im-sandbox-mikaelt/hello-becton-composite-action
           path: ./.github/actions/hello-becton-composite-action
+          token: ${{ secrets.GH_TOKEN_APP }}
 
       - name: Run a private composite action
         id: foo
