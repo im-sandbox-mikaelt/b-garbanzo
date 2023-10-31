@@ -40,5 +40,18 @@ jobs:
     environment: DEV
     steps:
       - name: Run a only if a PR is opened
-        if: ${{ github.event_name == 'pull_request' }}
+        if: ${{ github.event_name == 'pull_request' }} 
         run: echo Hello, from the PR!!!
+
+      - uses: actions/checkout@v3
+        with:
+          repository: im-sandbox-mikaelt/hello-becton-composite-action
+          path: ./.github/actions/hello-becton-composite-action
+
+      - name: Run a private composite action
+        id: foo
+        uses: ./.github/actions/hello-becton-composite-action
+        with:
+          who-to-greet: 'Mona the Octocat with Becton'
+      - run: echo random-number ${{ steps.foo.outputs.random-number }}
+        shell: bash
